@@ -1,12 +1,13 @@
 FROM ubuntu:xenial
 MAINTAINER Edgar Garriga <edgano@gmail.com>
 
-## Docker image for TCoffee Regressive method. Prepared for Springer Protocols
+## Docker image for Protocols explaining Regressive t-coffee method
+
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
       ed \
       less \
-      vim \
+      vim-tiny \
       wget \
       git \
       python \
@@ -113,6 +114,6 @@ RUN git clone https://github.com/cbcrg/tcoffee.git tcoffee && \
     make t_coffee && \
     cp t_coffee /bin/.
 
-ENV CACHE_4_TCOFFEE='${TMPDIR:-/tmp}/.tcoffee/cache'
-ENV LOCKDIR_4_TCOFFEE='${TMPDIR:-/tmp}/.tcoffee/lock'
-ENV TMP_4_TCOFFEE='${TMPDIR:-/tmp}/.tcoffee/tmp'
+ENV CACHE_4_TCOFFEE='/tmp/.tcoffee/cache'
+ENV LOCKDIR_4_TCOFFEE='/tmp/.tcoffee/lock'
+ENV TMP_4_TCOFFEE='/tmp/.tcoffee/tmp'
